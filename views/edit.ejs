@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        label {
+            display: block;
+        }
+    
+        input.error {
+            border: 1px solid red;
+        }
+    
+        label.error {
+            font-weight: normal;
+            color: red;
+            font-style: italic;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-success">
+        <span class="navbar-brand" style="color:#fff">
+            NodeJS CRUD APPLICATION - <b>Edit User Page </b>
+        </span>
+    </nav> <br />
+    <div class="container">
+        <hr />
+        <h3 class="text-center">Update Record here.. </h3>
+        <hr />
+        <div class="col-md-12">
+
+            <form id="form" name="insert" method="post" action="/UpdateRecord">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="Name">Name<span><b class="text-danger">*</b></span></label>
+                            <input type="hidden" name="_id" id="_id" value="<%=id%>" />
+                            <input type="text" id="Name" name="Name"  value="<%=EditRecord.Name%>" placeholder="Name"
+                                class="form-control"  />
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="Email">Email<span><b class="text-danger">*</b></span></label>
+                            <input type="email" id="Email" value="<%=EditRecord.Email%>" name="Email" placeholder="Email"
+                                class="form-control" /> </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="Salary">Salary<span><b class="text-danger">*</b></span></label>
+                            <input type="number" id="Salary" value="<%=EditRecord.Salary%>" name="Salary"  placeholder="Password"
+                                class="form-control" />
+                        </div>
+                    </div>
+
+
+
+
+                   
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="Designation">Designation <%=EditRecord.Designation%><span><b class="text-danger">*</b></span></label>
+                            <select  class="form-control" name="Designation" value="<%=EditRecord.Designation%>" id="Designation" required>
+                               <option value="<%=EditRecord.Designation%>"><%=EditRecord.Designation%></option>
+                               
+                                <%allDesignation.forEach(function(item){%>
+                                    <option value="<%=item.Designation%>"><%=item.Designation%></option>
+                                    
+                                    <%})%>
+                            </select>
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                   
+                </div>
+                <div class="col-md-6 pull-right">
+                    <a href="/" class="btn btn-warning">Back to User List</a>&nbsp;
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
+<script>
+
+$(document).ready(function () {
+    $("#form").validate({
+        rules: {
+            "Name": {
+                required: true,
+            },
+            "Email": {
+                required: true,
+            },
+            "Salary": {
+                required: true,
+
+            },
+
+            "Designation": {
+                required: true,
+
+            },
+           
+
+
+
+        },
+
+        messages: {
+            "Name": {
+                required: "please enter your Name"
+            },
+            "Email": {
+                required: "please enter your Email"
+            },
+            "Salary": {
+                required: "please enter your Salary"
+            },
+            "Designation": {
+                required: "please enter your Designation"
+            },
+          
+        }
+    });
+
+});
+
+</script>
+</html>

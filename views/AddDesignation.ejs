@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    label {
+        display: block;
+    }
+
+    input.error {
+        border: 1px solid red;
+    }
+
+    select.error {
+        border: 1px solid red;
+    }
+
+    label.error {
+        font-weight: normal;
+        color: red;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css"
+    integrity="sha512-f8gN/IhfI+0E9Fc/LKtjVq4ywfhYAVeMGKsECzDUHcFJ5teVwvKTqizm+5a84FINhfrgdvjX8hEJbem2io1iTA=="
+    crossorigin="anonymous" /> -->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-success">
+        <span class="navbar-brand" style="color:#fff">
+            NodeJS CRUD APPLICATION - <b> Add Designation</b>
+        </span>
+    </nav> <br />
+    <div class="container">
+        <hr />
+        <h3 class="text-center">Add New Designation </h3>
+        <hr />
+        <div class="col-md-12">
+
+            <form id="form" name="insert" method="post" action="/PostAddDesignation">
+
+                <div class="row">
+          
+                    <div class="col-md-4"> </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="Designation">Designation<span><b class="text-danger">*</b></span></label>
+                            <input type="text" id="Designation" name="Designation" placeholder="Designation" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="col-md-6 pull-right">
+                    <a href="/" class="btn btn-warning">Back to User List</a>&nbsp;
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#form").validate({
+            rules: {
+                "Name": {
+                    required: true,
+                },
+                "Email": {
+                    required: true,
+                },
+                "Salary": {
+                    required: true,
+
+                },
+
+                "Designation": {
+                    required: true,
+
+                },
+
+
+
+            },
+
+            messages: {
+                "Name": {
+                    required: "please enter your Name"
+                },
+                "Email": {
+                    required: "please enter your Email"
+                },
+                "Salary": {
+                    required: "please enter your Salary"
+                },
+                "Designation": {
+                    required: "please select your Designation"
+                },
+
+            }
+        });
+
+    });
+
+</script>
+
+</html>

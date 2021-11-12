@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .previous {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    .next {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .round {
+        border-radius: 50%;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-success">
+        <span class="navbar-brand" style="color:#fff">
+           NodeJS CRUD APPLICATION - <b> List of All User Page </b>
+        </span>
+    </nav> <br />
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <a href="/AddDesignation" class="btn btn-primary">Add New Destination </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/Add" class="btn btn-primary">Add New Record </a>
+                </div>
+            </div><br />
+        </div>
+        <div class="table-resposive">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="text-center">Sr no</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Salary</th>
+                    <th class="text-center">Designation</th>
+
+                    <th class="text-center">Actions</th>
+                </tr></thead>
+                <tbody>
+                <% allRecord.forEach(function(item,index){%>
+                    <tr>
+
+                        <td class="text-center">
+                            <%= index +1 %>
+                        </td>
+                        <td class="text-center">
+                            <%= item.Name %>
+                        </td>
+                        <td class="text-center">
+                            <%= item.Email %>
+                        </td>
+                        <td class="text-center">
+                            <%= item.Salary %>
+                        </td>
+                        <td class="text-center">
+                            <%= item.Designation %>
+                        </td>
+
+                        <td>
+                            <a href="/edit/<%=item._id%>" title="Edit" class="btn btn-primary"
+                                style="border-radius: 80px"> <span class="fa fa-edit"></span></i></a>
+                            <a href="/Delete/<%=item._id%>" title="Delete" class="btn btn-danger"
+                                style="border-radius: 100px"
+                                onclick="return confirm('Are you Sure to Remove : <%=item.Name%>')">
+                                <span class="fa fa-trash"></span> </a>
+                        </td>
+                    </tr>
+                    <%})%>
+                </tbody>
+            </table>
+
+        </div>
+</body>
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script src="/vendor/datatables/jquery.dataTables.js"></script>
+
+<script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<script src="/javascripts/admin-datatables.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        $('#dataTable').DataTable();
+    });
+</script>
+
+</html>
